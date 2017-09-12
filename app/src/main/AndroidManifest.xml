@@ -3,19 +3,37 @@
           package="com.skateboard.peopleforce">
 
     <application
+        android:name="com.skateboard.library.application.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity
+            android:launchMode="singleTask"
+            android:name="com.skateboard.peopleforce.ui.activity.MainActivity">
+
+        </activity>
+
+        <activity
+            android:theme="@style/SplashTheme"
+            android:launchMode="singleTask"
+            android:name="com.skateboard.peopleforce.ui.activity.SplashActivity"/>
+
+
+        <activity
+            android:theme="@style/LaunchDispathTheme"
+            android:launchMode="singleTask"
+            android:name=".ui.activity.LaunchDispatchActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>

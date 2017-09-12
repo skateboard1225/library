@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 /**
  * Created by skateboard on 2017/8/29.
  */
-class BaseActivity:AppCompatActivity()
+open class BaseActivity:AppCompatActivity()
 {
 
 }
