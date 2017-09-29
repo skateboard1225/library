@@ -86,7 +86,7 @@ class LaunchManager : BaseManager() {
                 .subscribeOn(Schedulers.newThread())
                 .concatMap {
 
-                    val getMainConfigService = RetrofitManager.getData(GetMainConfigService::class.java)
+                    val getMainConfigService = RetrofitManager.getRequest(GetMainConfigService::class.java)
 
                     val mainConfig = getMainConfigService.getMainConfig("http://peopleforce.app/mainconfig.json").execute().body()
 
@@ -115,7 +115,7 @@ class LaunchManager : BaseManager() {
                         Observable.just(it)
 
                     } else {
-                        val getLocalizationService = RetrofitManager.getData(GetLocalizationService::class.java)
+                        val getLocalizationService = RetrofitManager.getRequest(GetLocalizationService::class.java)
 
                         val url = ConfigurationManager.default.getUrl(Constants.NLID_FEED_LOCALIZATION)
 
@@ -144,6 +144,7 @@ class LaunchManager : BaseManager() {
                     override fun onError(e: Throwable) {
 
                         println("launch error "+e.message)
+                        notifyLaunchFinished(LAUNCH_RESULT.LAUNCH_FAILED)
 
                     }
 

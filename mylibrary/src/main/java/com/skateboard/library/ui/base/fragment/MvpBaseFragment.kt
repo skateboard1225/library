@@ -27,6 +27,7 @@ abstract class MVPBaseFragment<V: IView,T: IPresenter<V>> : Fragment(),IView {
 
     protected fun detechPresenter()
     {
+        presenter?.cancelRequest()
         presenter?.detechView()
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.DialogInterface.OnClickListener
 import android.support.v7.app.AlertDialog
 import com.neulion.library.ui.widget.base.LoadingDialog
+import com.skateboard.library.application.Constants
 import com.skateboard.library.application.manager.LocalizationManager
 
 
@@ -40,7 +41,7 @@ object DialogUtil {
 
         if(okListener!=null) {
 
-            builder.setPositiveButton("OK", okListener)
+            builder.setPositiveButton(LocalizationManager.getString("app.ui.confirm"), okListener)
 
         }
         if (cancelListener != null) {
@@ -54,21 +55,20 @@ object DialogUtil {
 
 
 
-    fun showMessageDialog(context: Context?, message: String, okListener: OnClickListener?): AlertDialog? {
+    fun showMessageDialog(context: Context?, message: String, okListener: OnClickListener?=null): AlertDialog? {
         if(context!=null)
         {
             val builder = AlertDialog.Builder(context)
             builder.setMessage(message)
-
+                    .setTitle("Alert")
                     .setCancelable(false)
-
-                    .setPositiveButton("OK", okListener)
+                    .setPositiveButton(LocalizationManager.getString(Constants.APP_UI_CONFIRM), okListener)
 
             return builder.show()
         }
         else
         {
-            return null;
+            return null
         }
     }
 }

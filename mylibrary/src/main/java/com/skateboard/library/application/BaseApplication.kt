@@ -34,6 +34,8 @@ open class BaseApplication : Application()
         BaseManager.MANAGERS[Constants.CONFIGURATION_MANAGER]=ConfigurationManager()
 
         BaseManager.MANAGERS[Constants.LOCALIZATION_MANAGER]=LocalizationManager()
+
+        BaseManager.MANAGERS[Constants.ACCOUNT_MANAGER]=AccountManager()
     }
 
     private fun dispatchManagers()

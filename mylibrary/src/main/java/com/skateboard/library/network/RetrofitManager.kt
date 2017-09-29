@@ -2,7 +2,9 @@ package com.skateboard.library.network
 
 import com.skateboard.library.network.convert.ResultConvertFactory
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -15,6 +17,7 @@ import java.util.concurrent.TimeUnit
 object RetrofitManager {
 
     private var retrofit:Retrofit
+
 
     init {
 
@@ -31,15 +34,16 @@ object RetrofitManager {
     }
 
 
-    fun <T> getData(service:Class<T>):T
+    fun <T> getRequest(service:Class<T>):T
     {
         return retrofit.create(service)
     }
 
-    fun <T> observer(observer: Observable<T>): Observable<T>
+    fun <T> observer(observable: Observable<T>): Observable<T>
     {
 
-        return observer.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+       return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+
     }
 
 }

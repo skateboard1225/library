@@ -7,6 +7,8 @@ import com.skateboard.library.presenter.base.IView
  */
 interface RegisterView:IView {
 
-    fun register()
+    fun showMessage(message:String)
+
+    fun enterMainActivity()
 
 }

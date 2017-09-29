@@ -7,12 +7,17 @@ open class IPresenter<T:IView>
 {
     protected var view:T?=null
 
-    fun attachView(view:T)
+    open fun attachView(view:T)
     {
         this.view=view
     }
 
-    fun detechView()
+    open fun cancelRequest()
+    {
+
+    }
+
+    open fun detechView()
     {
         view=null
     }
